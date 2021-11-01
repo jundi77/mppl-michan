@@ -16,9 +16,11 @@ class CreateKeranjangTable extends Migration
         Schema::create('Keranjang', function (Blueprint $table) {
             $table->integer('ID_Pemesanan');
             $table->string('ID_Barang', 10);
+            $table->integer('ID_Pembeli');
                 $table->foreign('ID_Barang')->references('ID_Barang')->on('Barang');
                 $table->foreign('ID_Pemesanan')->references('ID_Pemesanan')->on('Pemesanan');
-                $table->primary(['ID_Pemesanan', 'ID_Barang']);
+                $table->foreign('ID_Pembeli')->references('ID_Pembeli')->on('Pembeli');
+                $table->primary(['ID_Pembeli', 'ID_Barang']);
 
             $table->string('Nama_Barang', 25);
             $table->integer('Jumlah');

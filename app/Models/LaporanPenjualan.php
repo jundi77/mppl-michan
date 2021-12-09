@@ -11,4 +11,8 @@ class LaporanPenjualan extends Model
 
     public $timestamps = false;
     protected $table = 'Laporan_Penjualan';
+
+    public function ambilDataLaporan() {}
+    public function hapusDataLaporan() {}
+    public function simpanDataLaporan() {}
 }

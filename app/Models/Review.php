@@ -11,4 +11,17 @@ class Review extends Model
 
     public $timestamps = false;
     protected $table = 'Review';
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'ID_Barang', 'ID_Barang');
+    }
+
+    public function pembeli()
+    {
+        return $this->belongsTo(Pembeli::class, 'ID_Pembeli', 'ID_Pembeli');
+    }
+
+    public function simpanReview() {}
+    public function hapusReview() {}
 }

@@ -11,4 +11,14 @@ class Pemesanan extends Model
 
     public $timestamps = false;
     protected $table = 'Pemesanan';
+
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'ID_Pemesanan', 'ID_Pemesanan');
+    }
+
+    public function ambilDataPesanan() {}
+    public function ambilDataPengiriman() {}
+    public function simpanDataPemesanan() {}
+    public function hapusDataPemesanan() {}
 }

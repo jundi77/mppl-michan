@@ -11,4 +11,8 @@ class Administrator extends Model
 
     public $timestamps = false;
     protected $table = 'Administrator';
+
+    public function ambilDataAdmin() {}
+    public function hapusDataAdmin() {}
+    public function simpanDataAdmin() {}
 }

@@ -28,4 +28,7 @@ class Keranjang extends Model
     }
 
     // TODO relation pembeli
+
+    public function listBarangOrder() {}
+    public function simpanBarangOrder() {}
 }

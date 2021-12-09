@@ -11,4 +11,9 @@ class Pembayaran extends Model
 
     public $timestamps = false;
     protected $table = 'Pembayaran';
+
+    public function ambilDataPesan() {}
+    public function ambilDataPembayaran() {}
+    public function simpanDataPembayaran() {}
+    public function hapusDataPembayaran() {}
 }

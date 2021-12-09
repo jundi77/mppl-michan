@@ -17,4 +17,6 @@ class StatusPemesanan extends Model
         'ID_Pembeli',
         'NoResi',
     ];
+
+    public function cekStatus() {}
 }

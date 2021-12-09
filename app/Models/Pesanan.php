@@ -16,4 +16,7 @@ class Pesanan extends Model
         'ID_Pemesanan',
         'ID_Pembeli',
     ];
+
+    public function simpanDataPesan() {}
+    public function ambilDataPesan() {}
 }

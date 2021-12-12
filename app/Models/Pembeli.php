@@ -56,4 +56,13 @@ class Pembeli extends Model
         return $this->save();
     }
 
+    /**
+     * Menghapus data akun
+     *
+     * @return bool|null
+     */
+    public function hapusDataAkun()
+    {
+        return $this->delete();
+    }
 }

@@ -38,7 +38,7 @@ class Pemesanan extends Model
      * @param integer|null $id_pembeli
      * @return Pemesanan|Collection
      */
-    public function ambilDataPesanan(int|null $id_pesanan, int|null $id_pembeli)
+    public function ambilDataPemesanan(int|null $id_pesanan, int|null $id_pembeli=null)
     {
         if ($id_pesanan) {
             return Pemesanan::where('ID_Pemesanan' ,$id_pesanan)->first();
@@ -75,21 +75,47 @@ class Pemesanan extends Model
     /**
      * Menyimpan perubahan pemesanan
      *
+     * @var int|null $id_pesanan
      * @return bool
      */
-    public function simpanDataPemesanan()
+    public function simpanDataPemesanan(int|null $id_pesanan=null)
     {
-        $this->save();
+        /**
+         * Jika diberikan id pesanan,
+         * simpan record yang id pesanannya sesuai
+         */
+        if ($id_pesanan) {
+            if ($this->ID_Pemesanan == $id_pesanan) {
+                return $this->save();
+            }
+
+            return false;
+        }
+
+        return $this->save();
     }
 
     /**
      * Menghapus data pemesanan
      *
+     * @var int|null $ud_pesanan
      * @return bool|null
      */
-    public function hapusDataPemesanan()
+    public function hapusDataPemesanan(int|null $id_pesanan=null)
     {
-        $this->delete();
+        /**
+         * Jika diberikan id pesanan,
+         * hapus record yang id pesanannya sesuai
+         */
+        if ($id_pesanan) {
+            if ($this->ID_Pemesanan == $id_pesanan) {
+                return $this->delete();
+            }
+
+            return false;
+        }
+
+        return $this->delete();
     }
 
 }

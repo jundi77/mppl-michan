@@ -12,8 +12,45 @@ class Pembayaran extends Model
     public $timestamps = false;
     protected $table = 'Pembayaran';
 
-    public function ambilDataPesan() {}
-    public function ambilDataPembayaran() {}
-    public function simpanDataPembayaran() {}
-    public function hapusDataPembayaran() {}
+    /**
+     * Mengembalikan data pemesanan terkait.
+     *
+     * @return Pemesanan
+     */
+    public function ambilDataPesan()
+    {
+        $this->belongsTo(Pemesanan::class, 'ID_Pemesanan', 'ID_Pemesanan');
+    }
+
+    /**
+     * Mengambil data pembayaran berdasarkan nomor resi
+     *
+     * @param string $noresi Nomor resi pembayaran
+     * @return Pembayaran
+     */
+    public function ambilDataPembayaran(string $noresi)
+    {
+        return Pembayaran::where(['NoResi' => $noresi])->first();
+    }
+
+    /**
+     * Simpan data pembayaran ke DB.
+     *
+     * @return bool
+     */
+    public function simpanDataPembayaran()
+    {
+        return $this->save();
+    }
+
+    /**
+     * Hapus data pembayaran dari DB
+     *
+     * @return bool|null
+     */
+    public function hapusDataPembayaran()
+    {
+        return $this->delete();
+    }
+
 }

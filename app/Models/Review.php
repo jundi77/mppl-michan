@@ -22,6 +22,25 @@ class Review extends Model
         return $this->belongsTo(Pembeli::class, 'ID_Pembeli', 'ID_Pembeli');
     }
 
-    public function simpanReview() {}
-    public function hapusReview() {}
+    /**
+     * Menghapus data review
+     *
+     * @return bool|null
+     */
+    public function hapusReview()
+    {
+        return $this->delete();
+    }
+
+    /**
+     * Menyimpan data review
+     *
+     * @return bool
+     */
+    public function simpanReview()
+    {
+        return $this->save();
+    }
+
+
 }

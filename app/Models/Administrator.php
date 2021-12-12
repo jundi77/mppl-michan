@@ -12,7 +12,35 @@ class Administrator extends Model
     public $timestamps = false;
     protected $table = 'Administrator';
 
-    public function ambilDataAdmin() {}
-    public function hapusDataAdmin() {}
-    public function simpanDataAdmin() {}
+    /**
+     * Mengambil data admin berdasarkan ID
+     *
+     * @param integer $id_admin
+     * @return Administrator
+     */
+    public function ambilDataAdmin(int $id_admin)
+    {
+        return Administrator::where('ID_Admin', $id_admin)->first();
+    }
+
+    /**
+     * Menghapus data admin
+     *
+     * @return bool|null
+     */
+    public function hapusDataAdmin()
+    {
+        return $this->delete();
+    }
+
+    /**
+     * Menyimpan data admin
+     *
+     * @return bool
+     */
+    public function simpanDataAdmin()
+    {
+        return $this->save();
+    }
+
 }

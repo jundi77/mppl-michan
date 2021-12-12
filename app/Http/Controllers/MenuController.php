@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Boundary\MenuUI;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->MenuUI = resolve(MenuUI::class);
+    }
+
     public function pilihDataPembeli(Request $request) {}
     public function ambilMenuUtama(Request $request) {}
     public function pilihDataBarang(Request $request) {}

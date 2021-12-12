@@ -12,6 +12,7 @@ class Barang extends Model
     public $timestamps = false;
     protected $table = 'Barang';
 
+    /** Laravel relationship models  */
     public function review()
     {
         return $this->hasMany(Review::class, 'ID_Barang', 'ID_Barang');
@@ -31,9 +32,46 @@ class Barang extends Model
     {
         return $this->hasManyThrough(Pembeli::class, Keranjang::class, 'ID_Barang', 'ID_Pembeli', 'ID_Barang', 'ID_Pembeli');
     }
+    /** Laravel relationship models  */
 
-    public function cekBarang() {}
-    public function dataBarang() {}
-    public function stokKurang() {}
-    public function ambilDeskripsiBarang() {}
+    /**
+     * Cek apakah barang masih ada.
+     *
+     * @return bool
+     */
+    public function cekBarang()
+    {
+        return (0 >= $this->Inventory);
+    }
+
+    /**
+     * Mengembalikan data barang dalam bentuk array.
+     *
+     * @return array
+     */
+    public function dataBarang()
+    {
+        return $this->toArray();
+    }
+
+    /**
+     * Cek jika stok kurang dari yang tersimpan.
+     *
+     * @param integer $amount
+     * @return bool
+     */
+    public function stokKurang(int $amount)
+    {
+        return ($this->Inventory < $amount);
+    }
+
+    /**
+     * Mengembalikan deskripsi barang dari record.
+     *
+     * @return string Detail barang
+     */
+    public function ambilDeskripsiBarang()
+    {
+        return $this->Detail_Barang;
+    }
 }

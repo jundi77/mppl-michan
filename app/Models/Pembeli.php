@@ -12,6 +12,7 @@ class Pembeli extends Model
     public $timestamps = false;
     protected $table = 'Pembeli';
 
+    /** Laravel relationship models  */
     public function review()
     {
         return $this->hasMany(Review::class, 'ID_Pembeli', 'ID_Pembeli');
@@ -31,7 +32,28 @@ class Pembeli extends Model
     {
         return $this->hasManyThrough(Barang::class, Review::class, 'ID_Pembeli', 'ID_Barang', 'ID_Pembeli', 'ID_Barang');
     }
+    /** Laravel relationship models  */
 
-    public function ambilDataAkun() {}
-    public function simpanDataAkun() {}
+
+    /**
+     * Mengambil data akun berdasarkan ID Pembeli
+     *
+     * @var int $id ID Pembeli
+     * @return Pembeli
+     */
+    public function ambilDataAkun(int $id)
+    {
+        return Pembeli::where(['ID_Pembeli' => $id])->first();
+    }
+
+    /**
+     * Menyimpan data akun
+     *
+     * @return bool Status perubahan
+     */
+    public function simpanDataAkun()
+    {
+        return $this->save();
+    }
+
 }

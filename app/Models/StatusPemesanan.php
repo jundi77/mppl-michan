@@ -18,5 +18,14 @@ class StatusPemesanan extends Model
         'NoResi',
     ];
 
-    public function cekStatus() {}
+    /**
+     * Mengembalikan status pemesanan
+     *
+     * @return string
+     */
+    public function cekStatus()
+    {
+        return $this->Status;
+    }
+
 }

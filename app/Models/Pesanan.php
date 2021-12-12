@@ -17,6 +17,25 @@ class Pesanan extends Model
         'ID_Pembeli',
     ];
 
-    public function simpanDataPesan() {}
-    public function ambilDataPesan() {}
+    /**
+     * Menyimpan data pesanan
+     *
+     * @return bool
+     */
+    public function simpanDataPesan()
+    {
+        return $this->save();
+    }
+
+    /**
+     * Mencari pesanan berdasarkan ID
+     *
+     * @param integer $id_pesanan
+     * @return Pesanan
+     */
+    public function ambilDataPesan(int $id_pesanan)
+    {
+        return Pesanan::where(['ID_Pemesanan' => $id_pesanan])->first();
+    }
+
 }

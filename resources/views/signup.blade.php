@@ -60,6 +60,7 @@
             <div class="container">
                 <h1>Daftar</h1>
                 <form>
+                    @csrf
                     <div class="form-row">
                       <div class="form-group col-md-5">
                         <label for="inputEmail">Email</label>

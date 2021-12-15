@@ -215,6 +215,7 @@
             </div>
             <div class="modal-body">
               <form>
+                @csrf
                 <div class="form-group">
                   <label for="exampleFormControlFile1">
                     Upload bukti transfer <br>
@@ -239,6 +240,7 @@
             </div>
             <div class="modal-body">
               <form>
+                @csrf
                 <div class="form-group text-center">
                     <label for="noResi">Masukkan Nomor Resi</label>
                     <input class="form-control" id="noResi" type="text">

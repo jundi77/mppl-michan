@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin_p',
+        ],
+        'pembeli' => [
+            'driver' => 'session',
+            'provider' => 'pembeli_p',
+        ],
     ],
 
     /*
@@ -63,6 +71,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'admin_p' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Administrator::class,
+        ],
+        'pembeli_p' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pembeli::class,
         ],
 
         // 'users' => [

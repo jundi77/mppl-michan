@@ -295,6 +295,7 @@
                         <div class="col-8">
                             <h3>Detail Produk</h3>
                             <form>
+                                @csrf
                                 <div class="form-group">
                                   <label for="productName">Nama Produk</label>
                                   <input type="text" class="form-control" id="productName">

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Administrator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    Auth::guard('pembeli')->logout();
+    $user = Auth::guard('pembeli')->user();
+    if( !($user)) {
+        Auth::guard('pembeli')->attempt(['Email_Pembeli' => 'pembeli1@mail.com', 'password' => 'test123']);
+        Auth::login(Auth::guard('pembeli')->user());
+        // dump(Auth::guard('admin')->user());
+    // dd(session()->all());
+        echo "<script> alert('test'); </script>";
+        return redirect('success');
+    }
+    // $user = new Administrator(); 
+    dd($user);
+    // return view('welcome');
 });

@@ -72,6 +72,7 @@
 
         <div class="container">
           <form>
+              @csrf
               <div class="form-row justify-content-end">
                 <div class="form-group col-md-3">
                     <select class="custom-select mr-sm-2 form-control" >

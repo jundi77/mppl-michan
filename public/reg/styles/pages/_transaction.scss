@@ -1,0 +1,44 @@
+.user-transaction {
+    .nav-tabs {
+        .nav-item {
+           .active {
+                background-color: #F4C7C9 !important; 
+                color: #FFFFFF !important;
+            } 
+        }
+        
+    }
+
+    .transc-img {
+        max-height: 100px;
+        max-width: 100px;
+    }
+
+    .btn {
+        padding: 5px 20px; 
+        margin: 0;
+        border-radius: 5px;
+    }
+}
+
+modal {
+    .transc-detail{
+        font-size: 10px;
+    }
+}
+
+.modal-body {
+    padding: 30px;
+    
+    h5 {
+        font-size: 20px;
+    }
+    
+    .form-control {
+        border-radius: 0px;
+    }
+
+    .checked {
+        color: #F4C7C9;
+    }
+}

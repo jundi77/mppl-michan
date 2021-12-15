@@ -1,0 +1,106 @@
+
+.product-content {
+    margin-bottom: 20px;
+    margin-top: 12px;
+    background: #ffffff;
+
+    .carousel-control {
+        .left{
+            margin-left: 0;
+        }
+        
+    }
+
+    .product-image {
+        background-color: #fff;
+        display: block;
+        min-height: 238px;
+        overflow: hidden;
+        position: relative
+    }
+
+    .product-detail {
+        border-bottom: 1px solid #dfe5e9;
+        padding-bottom: 17px;
+        padding-left: 16px;
+        padding-top: 16px;
+        position: relative;
+        background: #fff
+    }
+
+    .product-title {
+
+        .product-name {
+            font-size: 48px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #522121;
+        }
+
+        .product-category {
+            font-size: 16px;
+            padding: 10px 0;
+        }
+    }
+
+    .product-selection {
+        .form-control {
+            width: 100%;
+            // border-radius: 0;
+        }
+
+        label {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .form-row{
+            padding: 15px 5px; 
+        }
+
+    }
+
+    .btn {
+        padding: 8px 48px;
+    }
+}
+
+h5 {
+    font-size: 24px;
+}
+
+.product-detail {
+    padding: 30px 0 50px
+}
+
+.product-detail .carousel-control.left,
+.product-detail .carousel-control.right {
+    background: none!important
+}
+
+.product-detail .product-image {
+    border-right: none!important
+}
+
+@media only screen and (min-width:1024px) {
+    .product-content div[class*=col-md-4] {
+        padding-right: 0
+    }
+    .product-content div[class*=col-md-8] {
+        padding: 0 13px 0 0
+    }
+    .product-wrap div[class*=col-md-5] {
+        padding-right: 0
+    }
+    .product-wrap div[class*=col-md-7] {
+        padding: 0 13px 0 0
+    }
+    .product-content .product-image {
+        border-right: 1px solid #dfe5e9
+    }
+    .product-content .product-info {
+        position: relative
+    }
+}

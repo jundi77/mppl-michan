@@ -21,7 +21,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top">
         <div class="container">
-            <a href="/index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="/reg/images/logo/logo_michan.png" alt="Logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" 
@@ -33,19 +33,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item">
-                        <a href="/index.html" class="nav-link">Beranda</a>
+                        <a href="/" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/products.html" class="nav-link">Produk</a>
+                        <a href="/products" class="nav-link">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/cart.html" class="nav-link">
+                        <a href="/carts" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/bag.svg" width="20px">
                             <span class="d-lg-none">Keranjang</span> 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login.html" class="nav-link">
+                        <a href="/login" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/person.svg" width="24px">
                             <span class="d-lg-none">Akun</span>
                         </a> 
@@ -86,13 +86,13 @@
                                 <nav class="sidebar">
                                     <ul class="nav flex-column">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="/user-profile.html"> Biodata Diri</a>
+                                            <a class="nav-link" href="/user/profile"> Biodata Diri</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/user-transaction.html"> Riwayat Pemesanan </a>
+                                            <a class="nav-link" href="/user/transaction"> Riwayat Pemesanan </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/login.html"> Keluar </a>
+                                            <a class="nav-link" href="/logout"> Keluar </a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -119,15 +119,16 @@
                                 <!-- tab-content -->
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade-in active" id="orderPending">
+                                        @foreach ($pesanan as $p)
                                         <div class="card card-body">
                                             <div class="row justify-content-between">
                                                 <div class="col-lg-2">
                                                     <img src="/reg/images/pictures/alif-kemko.jpg" class="transc-img">
                                                 </div>
                                                 <div class="col-lg-4 ml-2">
-                                                    <strong>Alif Kemko - Peanut (M)</strong> <br>
-                                                    Total: Rp200.000 <br>
-                                                    Qty: 1
+                                                    <strong>{{  $p->Nama_Barang  }} - {{$p->Warna}} ({{$p->Ukuran}})</strong> <br>
+                                                    Total: Rp<?php echo $p->Harga_Barang * $p->Jumlah; ?> <br>
+                                                    Qty: {{$p->Jumlah}}
                                                 </div>
                                                 <div class="col-lg-1"></div>
                                                 <div class="col-lg-4 text-center align-self-center">
@@ -138,6 +139,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
 
                                     <div role="tabpanel" class="tab-pane fade" id="orderShipped">

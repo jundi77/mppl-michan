@@ -14,7 +14,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top">
         <div class="container">
-            <a href="/index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="/reg/images/logo/logo_michan.png" alt="Logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" 
@@ -26,19 +26,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="/index.html" class="nav-link">Beranda</a>
+                        <a href="/" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/products.html" class="nav-link">Produk</a>
+                        <a href="/products" class="nav-link">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/cart.html" class="nav-link">
+                        <a href="/carts" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/bag.svg" width="20px">
                             <span class="d-lg-none">Keranjang</span> 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login.html" class="nav-link">
+                        <a href="/login" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/person.svg" width="24px">
                             <span class="d-lg-none">Akun</span>
                         </a> 
@@ -60,10 +60,10 @@
                     <div class="col-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/index.html">Beranda</a></li>
-                                <li class="breadcrumb-item"><a href="/products.html">Produk</a></li>
+                                <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                                <li class="breadcrumb-item"><a href="/products">Produk</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Alif Kemko
+                                    {{ $barang->Nama_Barang }}
                                 </li>
                             </ol>
                         </nav>
@@ -109,10 +109,10 @@
                         <div class="product-information">
                             <div class="product-title">
                                 <div class="product-name">
-                                    Alif Kemko
+                                    {{ $barang->Nama_Barang }}
                                 </div>
                                 <div class="product-price">
-                                    Rp179.000
+                                    Rp{{ $barang->Harga_Barang }}
                                 </div>
                                 <div class="product-category">
                                     <strong>Kategori:</strong> Koko Dewasa
@@ -121,34 +121,27 @@
                                 <div class="product-description">
                                     <h5>Deskripsi</h5>
                                     <p>
-                                        • Size S,M,L,XL,XXL <br>
-                                        • matt polos Katun toyobo RM<br>
-                                        • kerah shanghai<br>
-                                        • kancing full buka-an<br>
-                                        • variasi lipit jarum /opneisel pada badan depan<br>
-                                        • kantong dada<br>
-                                        • cadangan kancing 1<br>
+                                        {{ $barang->Detail_Barang }}
                                     </p>
                                 </div>
                             </div>
+                            <form action="/carts" method="post">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$barang->ID_Barang}}">
                             <div class="product-selection">
                                 <div class="form-row justify-content-between">
                                     <div class="col-md-6">
                                         <label for="colorSelection">Warna</label>
                                         <select class="form-control" id="colorSelection" >
                                             <option class="disable">Warna</option>
-                                            <option>Marun</option>
-                                            <option>Peanut</option>
-                                            <option>Brown</option>
+                                            <option>{{  $barang->Warna_Barang  }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="sizeSelection">Ukuran</label>
                                         <select class="form-control" id="sizeSelection" >
                                             <option class="disable">Ukuran</option>
-                                            <option>XS</option>
-                                            <option>M</option>
-                                            <option>L</option>
+                                            <option>{{$barang->Ukuran_Barang}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -161,6 +154,7 @@
                                 </div>
                                 <button type="submit" class="btn">Masukkan Keranjang</button>
                             </div>
+                            </form>
 
 
                         </div>

@@ -14,7 +14,7 @@ class CreateKeranjangTable extends Migration
     public function up()
     {
         Schema::create('Keranjang', function (Blueprint $table) {
-            $table->integer('ID_Pemesanan');
+            $table->integer('ID_Pemesanan')->nullable();
             $table->string('ID_Barang', 10);
             $table->integer('ID_Pembeli');
                 $table->foreign('ID_Barang')->references('ID_Barang')->on('Barang');

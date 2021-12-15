@@ -29,7 +29,7 @@
         <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="/">
                 <div class="sidebar-brand-text mx-3"><img src="/adm/img/Logo/logo_michan.png" width="100%"></div>
             </a>
 
@@ -38,7 +38,7 @@
 
             <!-- Nav Item - Kelola Produk -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/admin/kelola-produk">
                     <i class="fas fa-fw fa-box"></i>
                     <span>Kelola Produk</span></a>
             </li>
@@ -56,7 +56,7 @@
 
             <!-- Nav Item - Laporan -->
             <li class="nav-item">
-                <a class="nav-link" href="report.html">
+                <a class="nav-link" href="/admin/laporan-penjualan">
                     <i class="fas fa-fw fa-clipboard"></i>
                     <span>Laporan Penjualan</span></a>
             </li>
@@ -138,9 +138,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($pesanan as $p)
                                         <tr>
-                                            <td>23/02/2020</td>
-                                            <td>12313</td>
+                                            <td>{{$p->Waktu}}</td>
+                                            <td>{{$p->ID_Pemesanan}}</td>
                                             <td>
                                                 <a href="#" 
                                                 class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
@@ -162,6 +163,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -206,7 +208,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="/logout">Logout</a>
                 </div>
             </div>
         </div>

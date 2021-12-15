@@ -21,7 +21,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top">
         <div class="container">
-            <a href="/index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="/reg/images/logo/logo_michan.png" alt="Logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" 
@@ -33,19 +33,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item">
-                        <a href="/index.html" class="nav-link">Beranda</a>
+                        <a href="/" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/products.html" class="nav-link">Produk</a>
+                        <a href="/products" class="nav-link">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/cart.html" class="nav-link">
+                        <a href="/carts" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/bag.svg" width="20px">
                             <span class="d-lg-none">Keranjang</span> 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login.html" class="nav-link">
+                        <a href="/login" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/person.svg" width="24px">
                             <span class="d-lg-none">Akun</span>
                         </a> 
@@ -60,24 +60,28 @@
         <div class="section-store-auth-login">
             <div class="container">
                 <h1>Masuk</h1>
-                <div class="field-text">
-                    <!-- email -->
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" 
-                    placeholder="Email address" required="" autofocus="">
-                </div>
-                <div class="field-text">
-                        <!-- password -->
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" 
-                        placeholder="Password" required="">
-                </div>
-                <a class="btn" href="/login.html">
-                    Masuk
-                </a>
-                <p>
-                    Belum punya akun? <a href="signup.html">Daftar sekarang</a>
-                </p> 
+                <form action="#" method="POST">
+                    @csrf
+                    <div class="field-text">
+                        <!-- email -->
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" id="inputEmail" class="form-control" 
+                        placeholder="Email address" required="" autofocus="" name="email">
+                    </div>
+                    <div class="field-text">
+                            <!-- password -->
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" id="inputPassword" class="form-control" 
+                            placeholder="Password" required="" name="password">
+                    </div>
+                    <!-- <a class="btn" href="/">
+                        Masuk
+                    </a> -->
+                    <input type="submit" value="Masuk" class="btn">
+                    <p>
+                        Belum punya akun? <a href="/signup">Daftar sekarang</a>
+                    </p> 
+                </form>
             </div>
         </div>
         

@@ -12,6 +12,10 @@ class BarangController extends Controller
         $this->BarangUI = resolve(BarangUI::class);
     }
 
-    public function ambilDataBarang(Request $request){}
+    public function ambilDataBarang(Request $request)
+    {
+        
+    }
+
     public function tampilDataBarang(Request $request){}
 }

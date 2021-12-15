@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top">
         <div class="container">
-            <a href="/index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="/reg/images/logo/logo_michan.png" alt="Logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" 
@@ -25,19 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="/index.html" class="nav-link">Beranda</a>
+                        <a href="/" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/products.html" class="nav-link">Produk</a>
+                        <a href="/products" class="nav-link">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/cart.html" class="nav-link">
+                        <a href="/carts" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/bag.svg" width="20px">
                             <span class="d-lg-none">Keranjang</span> 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login.html" class="nav-link">
+                        <a href="/login" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/person.svg" width="24px">
                             <span class="d-lg-none">Akun</span>
                         </a> 
@@ -59,7 +59,7 @@
                 <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/index.html">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="/">Beranda</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
                         Produk
                     </li>
@@ -102,8 +102,9 @@
         <section class="store-products">
             <div class="container">
                 <div class="row">
+                    @foreach ($barang as $b)
                     <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
+                        <a href="/products/detail/{{$b->ID_Barang}}" class="page-products d-block">
                             <div class="products-thumbnail">
                                 <div 
                                   class="products-image"
@@ -114,155 +115,14 @@
     
                             </div>
                             <div class="products-text">
-                                Dhira Dress
+                                {{ $b->Nama_Barang  }}
                             </div>
                             <div class="products-price">
-                                Rp315.000
+                                {{ $b->Harga_Barang  }}
                             </div>
                         </a>
                     </div>
-    
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
-                            <div class="products-thumbnail">
-                                <div 
-                                  class="products-image"
-                                  style="background-image: url(/reg/images/pictures/alif-kemko.jpg);">
-                                </div>
-                            </div>
-                            <div class="products-rating">
-    
-                            </div>
-                            <div class="products-text">
-                                Alif Kemko
-                            </div>
-                            <div class="products-price">
-                                Rp279.000
-                            </div>
-                        </a>
-                    </div>
-    
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
-                            <div class="products-thumbnail">
-                                <div 
-                                  class="products-image"
-                                  style="background-image: url(/reg/images/pictures/brokat-raya.jpg);">
-                                </div>
-                            </div>
-                            <div class="products-rating">
-    
-                            </div>
-                            <div class="products-text">
-                                Brokat Raya
-                            </div>
-                            <div class="products-price">
-                                Rp279.000
-                            </div>
-                        </a>
-                    </div>
-    
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
-                            <div class="products-thumbnail">
-                                <div 
-                                  class="products-image"
-                                  style="background-image: url(/reg/images/pictures/mala-square.jpg);">
-                                </div>
-                            </div>
-                            <div class="products-rating">
-                                
-                            </div>
-                            <div class="products-text">
-                                Mala Square
-                            </div>
-                            <div class="products-price">
-                                Rp169.000
-                            </div>
-                        </a>
-                    </div>
-    
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
-                            <div class="products-thumbnail">
-                                <div 
-                                  class="products-image"
-                                  style="background-image: url(/reg/images/pictures/yuna-dress.jpg);">
-                                </div>
-                            </div>
-                            <div class="products-rating">
-    
-                            </div>
-                            <div class="products-text">
-                                Yuna Dress
-                            </div>
-                            <div class="products-price">
-                                Rp169.000
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
-                            <div class="products-thumbnail">
-                                <div 
-                                  class="products-image"
-                                  style="background-image: url(/reg/images/pictures/hilya-raya.jpg);">
-                                </div>
-                            </div>
-                            <div class="products-rating">
-                                
-                            </div>
-                            <div class="products-text">
-                                Hilya Raya
-                            </div>
-                            <div class="products-price">
-                                Rp315.000
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
-                            <div class="products-thumbnail">
-                                <div 
-                                  class="products-image"
-                                  style="background-image: url(/reg/images/pictures/mala-square-2.jpg);">
-                                </div>
-                            </div>
-                            <div class="products-rating">
-    
-                            </div>
-                            <div class="products-text">
-                                Mala Square 2
-                            </div>
-                            <div class="products-price">
-                                Rp275.000
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="./product-detail.html" class="page-products d-block">
-                            <div class="products-thumbnail">
-                                <div 
-                                  class="products-image"
-                                  style="background-image: url(/reg/images/pictures/kids-kila-bunga.jpg);">
-                                </div>
-                            </div>
-                            <div class="products-rating">
-    
-                            </div>
-                            <div class="products-text">
-                                Kids Killa Bunga
-                            </div>
-                            <div class="products-price">
-                                Rp169.000
-                            </div>
-                        </a>
-                    </div>
-
-                    
+                    @endforeach
                 </div>
             </div>
         </section>

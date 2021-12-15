@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top">
         <div class="container">
-            <a href="/index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="/reg/images/logo/logo_michan.png" alt="Logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" 
@@ -25,19 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="/index.html" class="nav-link">Beranda</a>
+                        <a href="/" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/products.html" class="nav-link">Produk</a>
+                        <a href="/products" class="nav-link">Produk</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/cart.html" class="nav-link">
+                        <a href="/carts" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/bag.svg" width="20px">
                             <span class="d-lg-none">Keranjang</span> 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login.html" class="nav-link">
+                        <a href="/login" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/person.svg" width="24px">
                             <span class="d-lg-none">Akun</span>
                         </a> 
@@ -59,7 +59,7 @@
                 <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/index.html">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="/">Beranda</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
                         Keranjang
                     </li>
@@ -86,63 +86,34 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $total_bayar = 0; ?>
+                                @foreach ($carts as $c)
+                                <?php $total_bayar += $c->Jumlah * $c->Harga_Barang; ?>
                                 <tr>
                                     <td style="width: 25%;">
                                         <img src="/reg/images/pictures/product-details1.jpg" 
                                          class="cart-image">
                                     </td>
                                     <td style="width: 35%;">
-                                        <div class="product-title">Alana Michan</div>
-                                        <div class="product-subtitle">Ukuran S - Marun</div>
+                                        <div class="product-title">{{ $c->Nama_Barang  }}</div>
+                                        <div class="product-subtitle">{{ $c->Warna  }}</div>
                                     </td>
                                     <td style="width: 25%;">
-                                        <div class="product-title">1</div>
+                                        <div class="product-title">{{  $c->Jumlah  }}</div>
                                     </td>
                                     <td style="width: 35%;">
-                                        <div class="product-title">Rp199.000</div>
+                                        <div class="product-title">Rp<?php echo $c->Jumlah * $c->Harga_Barang; ?></div>
                                     </td>
                                     <td style="width: 20%;">
-                                        <a href="" class="btn btn-remove-cart">Remove</a>
+                                        <form action="#" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id" value="{{$c->ID_Barang}}">
+                                            <input type="submit" class="btn btn-remove-cart" value="Remove">
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td style="width: 25%;">
-                                        <img src="/reg/images/pictures/product-details2.jpg" 
-                                         class="cart-image">
-                                    </td>
-                                    <td style="width: 35%;">
-                                        <div class="product-title">Kids Killa Bunga</div>
-                                        <div class="product-subtitle">Ukuran XS - Hitam</div>
-                                    </td>
-                                    <td style="width: 25%;">
-                                        <div class="product-title">1</div>
-                                    </td>
-                                    <td style="width: 35%;">
-                                        <div class="product-title">Rp169.000</div>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <a href="" class="btn btn-remove-cart">Remove</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 25%;">
-                                        <img src="/reg/images/pictures/product-details3.jpg" 
-                                         class="cart-image">
-                                    </td>
-                                    <td style="width: 35%;">
-                                        <div class="product-title">Alif Kemko</div>
-                                        <div class="product-subtitle">Ukuran M - Olive</div>
-                                    </td>
-                                    <td style="width: 25%;">
-                                        <div class="product-title">1</div>
-                                    </td>
-                                    <td style="width: 35%;">
-                                        <div class="product-title">Rp279.000</div>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <a href="" class="btn btn-remove-cart">Remove</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -157,85 +128,86 @@
                         <h2 class="mb-4">Detail Pengiriman</h2>
                     </div>
                 </div>
-                <div class="form-row mb-2">
-                    <div class="from-group col-md-6">
-                        <label for="inputName">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="inputName" required>
-                    </div>
-                    <div class="from-group col-md-6">
-                        <label for="inputNumber">No. HP</label>
-                        <input type="text" class="form-control" id="inputNumber" required>
-                    </div>
-                </div>
-                <div class="form-row mb-2">
-                    <div class="col-md-12">
-                        <div class="from-group">
-                            <label for="inputAddress">Alamat</label>
-                            <input type="text" class="form-control" id=inputAddress required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row mb-2">
+                <form action="/carts/order" method="post">
+                    @csrf
+                    <div class="form-row mb-2">
                         <div class="from-group col-md-6">
-                            <label for="inputCity">Kota</label>
-                            <input type="text" class="form-control" id="inputCity" required>
+                            <label for="inputName">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="inputName" value="{{$user->Nama_Pembeli}}" required>
                         </div>
                         <div class="from-group col-md-6">
-                            <label for="inputZip">Kode Pos</label>
-                            <input type="text" class="form-control" id="inputZip" required>
+                            <label for="inputNumber">No. HP</label>
+                            <input type="text" class="form-control" id="inputNumber" value="{{$user->NoHP_Pembeli}}" required>
                         </div>
-                </div>
-                <!-- Payment Information -->
-                <div class="row">
-                    <div class="col-12">
-                        <hr />
                     </div>
-                    <div class="col-md-6">
-                        <h2 class="mb-4">Detail Pembayaran</h2>
+                    <div class="form-row mb-2">
+                        <div class="col-md-12">
+                            <div class="from-group">
+                                <label for="inputAddress">Alamat</label>
+                                <input type="text" class="form-control" id=inputAddress value="{{$user->Alamat_Pembeli}}" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <h2 class="mb-4">Metode Pembayaran</h2>
+                    <div class="form-row mb-2">
+                            <div class="from-group col-md-6">
+                                <label for="inputCity">Kota</label>
+                                <input type="text" class="form-control" id="inputCity" value="California"" required>
+                            </div>
+                            <div class="from-group col-md-6">
+                                <label for="inputZip">Kode Pos</label>
+                                <input type="text" class="form-control" id="inputZip" value="{{$user->PostCode}}" required>
+                            </div>
                     </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-6 e">
-                        <table class="table table-price">
-                            <tbody>
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <td>647.000</td>
-                                </tr>
-                                <tr>
-                                    <th>Ongkos Kirim</th>
-                                    <td>21.000</td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <td>668.000</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Payment Information -->
+                    <div class="row">
+                        <div class="col-12">
+                            <hr />
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="mb-4">Detail Pembayaran</h2>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="mb-4">Metode Pembayaran</h2>
+                        </div>
                     </div>
-                    <div class="col-md-5 align-self-start">
-                       <div class="form-check">
-                        <input class="form-check-input" name="payment" type="radio" id="via BCA">
-                        <label class="form-check-label" for="viaBCA">
-                            BANK BCA: 577-1-53-417 a.n <strong>MICHAN PERSADA</strong>
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" name="payment" type="radio" id="viaMandiri">
-                        <label class="form-check-label" for="viaMandiri">
-                            MANDIRI: 167-000-3368-692 a.n <strong>MICHAN PERSADA</strong>
-                        </label>
-                      </div>
+                    <div class="row ">
+                        <div class="col-md-6 e">
+                            <table class="table table-price">
+                                <tbody>
+                                    <tr>
+                                        <th>Subtotal</th>
+                                        <td>Rp{{$total_bayar}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Ongkos Kirim</th>
+                                        <td>21.000</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td>Rp<?php echo $total_bayar + 21000; ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-5 align-self-start">
+                           <div class="form-check">
+                            <input class="form-check-input" name="payment" type="radio" id="via BCA" value="BCA">
+                            <label class="form-check-label" for="viaBCA">
+                                BANK BCA: 577-1-53-417 a.n <strong>MICHAN PERSADA</strong>
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" name="payment" type="radio" id="viaMandiri"  value="Mandiri">
+                            <label class="form-check-label" for="viaMandiri">
+                                MANDIRI: 167-000-3368-692 a.n <strong>MICHAN PERSADA</strong>
+                            </label>
+                          </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-end">
-                    <a href="/order-success.html" class="btn btn-check-out">
-                        Proses Order
-                    </a>
-                </div>
+                    <div class="row justify-content-end">
+                        <input type="submit" class="btn btn-check-out" value="Proses Order">
+                    </div>
+                </form>
                 
             </div>
             </div>

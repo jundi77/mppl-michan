@@ -21,7 +21,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top">
         <div class="container">
-            <a href="/index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="/reg/images/logo/logo_michan.png" alt="Logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" 
@@ -33,19 +33,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item">
-                        <a href="/index.html" class="nav-link">Beranda</a>
+                        <a href="/" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/products.html" class="nav-link">Produk</a>
+                        <a href="/products" class="nav-link">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/cart.html" class="nav-link">
+                        <a href="/carts" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/bag.svg" width="20px">
                             <span class="d-lg-none">Keranjang</span> 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login.html" class="nav-link">
+                        <a href="/login" class="nav-link">
                             <img class="d-none d-lg-block" src="/reg/images/icon/person.svg" width="24px">
                             <span class="d-lg-none">Akun</span>
                         </a> 
@@ -85,13 +85,13 @@
                                 <nav class="sidebar">
                                     <ul class="nav flex-column">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="/user-profile.html"> Biodata Diri</a>
+                                            <a class="nav-link" href="/user/profile"> Biodata Diri</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/user-transaction.html"> Riwayat Pemesanan </a>
+                                            <a class="nav-link" href="/user/transaction"> Riwayat Pemesanan </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/login.html"> Keluar </a>
+                                            <a class="nav-link" href="/logout"> Keluar </a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -106,7 +106,7 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="email" class="form-control-plaintext" value="john@example.com">
+                                        <input type="email" class="form-control-plaintext" value="{{$user->Email_Pembeli}}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -114,7 +114,7 @@
                                         <h6 class="mb-0">Nama Lengkap</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control-plaintext" value="John Doe">
+                                        <input type="text" class="form-control-plaintext" value="{{$user->Nama_Pembeli}}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -122,7 +122,7 @@
                                         <h6 class="mb-0">No. HP</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control-plaintext" value="(239) 816-9029">
+                                        <input type="text" class="form-control-plaintext" value="{{$user->NoHP_Pembeli}}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -130,7 +130,7 @@
                                         <h6 class="mb-0">Alamat</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control-plaintext" value="Bay Area, San Francisco">
+                                        <input type="text" class="form-control-plaintext" value="{{$user->Alamat_Pembeli}}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -146,7 +146,7 @@
                                         <h6 class="mb-0">Kode Pos</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control-plaintext" value="120123">
+                                        <input type="text" class="form-control-plaintext" value="{{$user->PostCode}}">
                                     </div>
                                 </div>
                                 <div class="row justify-content-end">

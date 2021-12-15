@@ -12,6 +12,7 @@ class Pembeli extends Model implements Authenticatable
 
     public $timestamps = false;
     protected $table = 'Pembeli';
+    protected $guard = 'pembeli';
 
     /** Laravel relationship models  */
     public function review()

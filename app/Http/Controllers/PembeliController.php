@@ -21,7 +21,7 @@ class PembeliController extends Controller
      */
     public function ambilDataPembeli()
     {
-        return Auth::user();
+        return Auth::guard('pembeli')->user();
     }
 
     /**

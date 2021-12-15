@@ -29,7 +29,7 @@
         <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="/">
                 <div class="sidebar-brand-text mx-3"><img src="/adm/img/Logo/logo_michan.png" width="100%"></div>
             </a>
 
@@ -38,7 +38,7 @@
 
             <!-- Nav Item - Kelola Produk -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/admin/kelola-produk">
                     <i class="fas fa-fw fa-box"></i>
                     <span>Kelola Produk</span></a>
             </li>
@@ -47,7 +47,7 @@
 
             <!-- Nav Item - Kelola Status -->            
             <li class="nav-item">
-                <a class="nav-link" href="status.html">
+                <a class="nav-link" href="/admin/kelola-status">
                     <i class="fas fa-fw fa-bell"></i>
                     <span>Kelola Status</span></a>
             </li>
@@ -56,7 +56,7 @@
 
             <!-- Nav Item - Laporan -->
             <li class="nav-item">
-                <a class="nav-link" href="report.html">
+                <a class="nav-link" href="/admin/laporan-penjualan">
                     <i class="fas fa-fw fa-clipboard"></i>
                     <span>Laporan Penjualan</span></a>
             </li>
@@ -210,21 +210,28 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($barang as $b)
                                             <tr>
                                                 <td><img src="/adm/img/product-detail-1.jpg" width="100px"></td>
-                                                <td>Alif Kemko</td>
-                                                <td>ALF-KSMDF1</td>
-                                                <td>61</td>
-                                                <td>In-Stock</td>
+                                                <td>{{ $b->Nama_Barang }}</td>
+                                                <td>{{ $b->ID_Barang }}</td>
+                                                <td>{{ $b->Inventory }}</td>
+                                                <td>{{ $b->status }}</td>
                                                 <td>                            
                                                     <a href="#" 
                                                     class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                                                     data-toggle="modal" data-target="#addProductModal"><i
                                                         class="fas fa-edit fa-sm text-black-50"></i>Edit
                                                     </a>
-                                                    <button type="button" class="btn btn-danger btn-sm">Hapus</button>
+                                                    <form action="#" method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{$b->ID_Barang}}">
+                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                    </form>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -269,7 +276,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="/logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -294,11 +301,11 @@
                         </div>
                         <div class="col-8">
                             <h3>Detail Produk</h3>
-                            <form>
+                            <form action="#" method="POST">
                                 @csrf
                                 <div class="form-group">
                                   <label for="productName">Nama Produk</label>
-                                  <input type="text" class="form-control" id="productName">
+                                  <input type="text" class="form-control" id="productName" name="productName">
                                 </div>
                                 <div class="form-group">
                                     <label for="productPrice">Harga Produk</label>
@@ -306,51 +313,51 @@
                                         <div class="input-group-prepend">
                                           <div class="input-group-text">Rp</div>
                                         </div>
-                                        <input type="number" class="form-control" id="productPrice">
+                                        <input type="number" class="form-control" id="productPrice" name="productPrice">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="productName">Jumlah Barang</label>
-                                    <input type="number" class="form-control" id="productPrice">
+                                    <input type="number" class="form-control" id="productPrice" name="amount">
                                 </div>
                                 <div class="form-group">
                                     <label for="productStatus">Status</label>
                                     <div class="custom-control custom-radio custom-control-inline ml-4">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1">In-Stock</label>
+                                        <input type="radio" id="in-stock" name="in-stock" class="custom-control-input">
+                                        <label class="custom-control-label" for="in-stock">In-Stock</label>
                                       </div>
                                       <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Out-of-Stock</label>
+                                        <input type="radio" id="out-stock" name="out-stock" class="custom-control-input">
+                                        <label class="custom-control-label" for="out-stock">Out-of-Stock</label>
                                       </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="productName">Kode Produk</label>
-                                    <input type="text" class="form-control" id="productCode">
+                                    <input type="text" class="form-control" id="productCode" name="productCode" >
                                 </div>
                                 <div class="form-group">
                                     <label for="productDescription">Deskripsi Produk</label>
-                                    <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription"  rows="3"></textarea>
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
                                       <label for="productDescription">Warna</label>
-                                      <input type="text" class="form-control" placeholder="State">
+                                      <input type="text" class="form-control" placeholder="State" name="color">
                                     </div>
                                     <div class="col">
                                       <label for="productDescription">Ukuran</label>
-                                      <input type="text" class="form-control" placeholder="Zip">
+                                      <input type="text" class="form-control" placeholder="Zip" name="size">
                                     </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                      <input class="btn btn-primary" type="submit" value="Submit">
                                   </div>
                             </form>
                         </div>
                     </div>                    
                 </div>
 
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <input class="btn btn-primary" type="submit" value="Submit">
             </div>
         </div>
     </div>
